@@ -6,6 +6,7 @@ import persistance.dao.models.User;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.security.NoSuchAlgorithmException;
 
 public class AuthManager {
     private User authUser = null;
@@ -13,7 +14,7 @@ public class AuthManager {
         return authUser == null ? "" : authUser.name;
     }
 
-    public void auth(AuthModel authModel) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
+    public void auth(AuthModel authModel) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException, NoSuchAlgorithmException {
         authUser = getRegisteredUser(authModel);
     }
 
@@ -25,14 +26,14 @@ public class AuthManager {
         return authUser;
     }
 
-    public User getRegisteredUser(AuthModel authModel) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
+    public User getRegisteredUser(AuthModel authModel) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException, NoSuchAlgorithmException {
         User user = DatabaseProvider.userDatabase.findUserWithLogin(authModel.login);
         return user != null
                 ? AuthProvider.passwordAuth.isUserValid(user, authModel.password) ? user : null
                 : null;
     }
 
-    public AuthModelState getUserTryAuthState(AuthModel authModel) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
+    public AuthModelState getUserTryAuthState(AuthModel authModel) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException, NoSuchAlgorithmException {
         User user = DatabaseProvider.userDatabase.findUserWithLogin(authModel.login);
         AuthModelState res;
         if(user != null) {

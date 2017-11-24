@@ -4,12 +4,13 @@ import business.AuthProvider;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Scanner;
 
 public class CommandParser {
     private String command = "";
 
-    public void Run() throws IllegalAccessException, NoSuchFieldException, IOException, NoSuchMethodException, InstantiationException, InvocationTargetException {
+    public void Run() throws IllegalAccessException, NoSuchFieldException, IOException, NoSuchMethodException, InstantiationException, InvocationTargetException, NoSuchAlgorithmException {
         Scanner in = new Scanner(System.in);
         while(!command.equals(IAvailableCommands.exit)) {
             command = in.nextLine();
@@ -24,7 +25,7 @@ public class CommandParser {
         return tokens;
     }
 
-    private void invokeCommand(String[] tokens) throws IllegalAccessException, NoSuchFieldException, IOException, NoSuchMethodException, InvocationTargetException, InstantiationException {
+    private void invokeCommand(String[] tokens) throws IllegalAccessException, NoSuchFieldException, IOException, NoSuchMethodException, InvocationTargetException, InstantiationException, NoSuchAlgorithmException {
         if(CommandsMap.getCommands().containsKey(tokens[0])) {
             if(AuthProvider.permissionManager.isCommandAllowed(tokens[0])) {
                 CommandsMap.getCommands().get(tokens[0]).Invoke(tokens);

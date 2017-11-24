@@ -27,9 +27,9 @@ public class AuthHelper {
     public static AuthModel readAuthData() {
         AuthModel authModel = new AuthModel();
         Scanner scan = new Scanner(System.in);
-        System.out.println("Enter login: ");
+        System.out.print("Enter login: ");
         authModel.login = scan.nextLine();
-        System.out.println("Enter password");
+        System.out.print("Enter password: ");
         authModel.password = scan.nextLine();
         return authModel;
     }

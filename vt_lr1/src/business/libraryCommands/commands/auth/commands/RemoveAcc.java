@@ -10,10 +10,11 @@ import persistance.dao.models.User;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.security.NoSuchAlgorithmException;
 
 public class RemoveAcc implements ILibraryCommand {
     @Override
-    public void Invoke(String[] tokens) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
+    public void Invoke(String[] tokens) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException, NoSuchAlgorithmException {
         AuthModel authModel = AuthHelper.readAuthData();
         AuthModelState tryAuthState = AuthProvider.authManager.getUserTryAuthState(authModel);
         if(tryAuthState == AuthModelState.Valid) {
@@ -22,6 +23,7 @@ public class RemoveAcc implements ILibraryCommand {
             }
             User user =DatabaseProvider.userDatabase.findUserWithLogin(authModel.login);
             DatabaseProvider.userDatabase.delete(user);
+            System.out.println("Done.");
         } else {
             AuthHelper.printTryAuthState(tryAuthState);
         }
