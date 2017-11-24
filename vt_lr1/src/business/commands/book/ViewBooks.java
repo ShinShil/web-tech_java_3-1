@@ -1,5 +1,6 @@
 package business.commands.book;
 
+import business.configuration.constants.IViewBookConstants;
 import persistance.dao.models.BookRecord;
 import business.configuration.DatabaseProvider;
 import business.commandsService.ILibraryCommand;
@@ -12,6 +13,11 @@ public class ViewBooks implements ILibraryCommand {
     @Override
     public void Invoke(String[] tokens) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
         BookRecord[] books = DatabaseProvider.bookDatabase.getAllBooks();
-        BookDialog.printBooks(books);
+        int bookOnPage = BookDialog.readBooksPerPageAmount();
+        if(bookOnPage == IViewBookConstants.notNeedPaging) {
+            BookDialog.printBooks(books);
+        }else {
+            BookDialog.printBooksWithPaging(books, bookOnPage);
+        }
     }
 }
