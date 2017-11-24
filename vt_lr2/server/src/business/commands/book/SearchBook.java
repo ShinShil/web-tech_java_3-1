@@ -31,11 +31,7 @@ public class SearchBook implements ILibraryCommand {
                 }
                 return isPassFilter;
             }).toArray(BookRecord[]::new);
-            if(findBooks.length > 0) {
-                BookDialog.printBooks(findBooks);
-            } else {
-                System.out.println("No books found");
-            }
+            BookDialog.printBooks(findBooks);
         }
     }
 }

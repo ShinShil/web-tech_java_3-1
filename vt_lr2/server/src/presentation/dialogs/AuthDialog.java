@@ -8,17 +8,17 @@ import persistance.models.UserRole;
 
 import java.util.Scanner;
 
-public class AuthDialog {
+public class AuthDialog extends BaseDialog {
     public static User readNewUser() {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Enter login: ");
-        String login = scan.nextLine();
-        System.out.print("Enter password: ");
-        String password = scan.nextLine();
-        System.out.print("Enter email: ");
-        String email = scan.nextLine();
-        System.out.print("Enter key for admin role: ");
-        String adminKey = scan.nextLine();
+        printer.print("Enter login: ");
+        String login = scanner.nextLine();
+        printer.print("Enter password: ");
+        String password = scanner.nextLine();
+        printer.print("Enter email: ");
+        String email = scanner.nextLine();
+        printer.print("Enter key for admin role: ");
+        String adminKey = scanner.nextLine();
         User user = new User();
         user.name = login;
         user.email = email;
@@ -27,37 +27,41 @@ public class AuthDialog {
         return user;
     }
 
+    public static void printAfterUserRegistered() {
+        printer.println("New user has  been successfully registered");
+    }
+
     public static AuthModel readAuthData() {
         AuthModel authModel = new AuthModel();
         Scanner scan = new Scanner(System.in);
-        System.out.print("Enter login: ");
-        authModel.login = scan.nextLine();
-        System.out.print("Enter password: ");
-        authModel.password = scan.nextLine();
+        printer.print("Enter login: ");
+        authModel.login = scanner.nextLine();
+        printer.print("Enter password: ");
+        authModel.password = scanner.nextLine();
         return authModel;
     }
 
     public static void printTryAuthState(AuthModelState state) {
         switch(state) {
             case Valid:
-                System.out.println("Login and password are valid. You are done.");
+                printer.println("Login and password are valid. You are done.");
                 break;
             case WrongPassword:
-                System.out.println("Wrong password");
+                printer.println("Wrong password");
                 break;
             case WrongLogin:
-                System.out.println("Wrong login");
+                printer.println("Wrong login");
                 break;
         }
     }
 
     public static void printLogInfo(User user) {
         if(user == null) {
-            System.out.println("User is logged out");
+            printer.println("User is logged out");
         } else {
-            System.out.println("User is logged on");
-            System.out.println("Login: " + user.name);
-            System.out.println("Role: " + user.role);
+            printer.println("User is logged on");
+            printer.println("Login: " + user.name);
+            printer.println("Role: " + user.role);
         }
 
     }

@@ -3,8 +3,10 @@ package business.commands.book;
 import persistance.models.BookRecord;
 import business.configuration.DatabaseProvider;
 import business.commandsService.ILibraryCommand;
+import presentation.dialogs.BaseDialog;
 import presentation.dialogs.BookDialog;
 
+import java.awt.print.Book;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
@@ -14,9 +16,9 @@ public class DeleteBook implements ILibraryCommand {
         BookRecord book = BookDialog.getBookWithId();
         if(book != null) {
             DatabaseProvider.bookDatabase.delete(book);
-            System.out.println("book has been successfully deleted");
+            BookDialog.printAfterBookDeleted();
         } else {
-            System.out.println("book with specified id wasn't found");
+            BookDialog.printBookWithIdNotFound();
         }
     }
 }

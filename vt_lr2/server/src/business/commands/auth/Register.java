@@ -16,6 +16,6 @@ public class Register implements ILibraryCommand {
         User newUser = AuthDialog.readNewUser();
         newUser.password = AuthProvider.passwordAuth.encodePassword(newUser.password);
         DatabaseProvider.userDatabase.add(newUser);
-        System.out.println("New user has  been successfully registered");
+        AuthDialog.printAfterUserRegistered();
     }
 }

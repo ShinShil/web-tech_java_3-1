@@ -1,19 +1,19 @@
 package business.commandsService;
 
+import business.commandsService.providers.ConsoleCommandProvider;
 import business.configuration.AuthProvider;
+import presentation.dialogs.CommandDialog;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Scanner;
 
 public class CommandParser {
     private String command = "";
 
     public void Run() throws IllegalAccessException, NoSuchFieldException, IOException, NoSuchMethodException, InstantiationException, InvocationTargetException, NoSuchAlgorithmException {
-        Scanner in = new Scanner(System.in);
         while(!command.equals(IAvailableCommands.exit)) {
-            command = in.nextLine();
+            command = CommandDialog.getCommand();
             String[] tokens = getTokens(command);
             invokeCommand(tokens);
         }
@@ -30,11 +30,10 @@ public class CommandParser {
             if(AuthProvider.permissionManager.isCommandAllowed(tokens[0])) {
                 CommandsMap.getCommands().get(tokens[0]).Invoke(tokens);
             } else {
-                System.out.println("You are not allowed to execute this command");
+                CommandDialog.printWhenNotAllowedCommand();
             }
         } else {
-            System.out.println("Unknown command: " + tokens[0]);
-            System.out.println("Type help for available commands");
+            CommandDialog.printUnknowCommand(tokens[0]);
         }
     }
 }

@@ -4,6 +4,7 @@ import business.configuration.DatabaseProvider;
 import persistance.models.BookRecord;
 import persistance.models.User;
 import persistance.models.UserRole;
+import presentation.dialogs.EmailDialog;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -25,7 +26,7 @@ public class EmailSender {
     }
 
     private void sendEmail(String userMail, String message) {
-        System.out.println("Email has been sent to " + userMail + " with message: " + message);
+        EmailDialog.printAfterEmailSende(userMail, message);
     }
 
     private String getNewBookMessage(BookRecord bookRecord) {

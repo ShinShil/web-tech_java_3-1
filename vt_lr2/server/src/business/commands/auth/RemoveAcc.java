@@ -1,12 +1,13 @@
 package business.commands.auth;
 
-import business.configuration.DatabaseProvider;
-import business.configuration.AuthProvider;
-import business.commandsService.ILibraryCommand;
-import presentation.models.AuthModel;
 import business.auth.AuthModelState;
+import business.commandsService.ILibraryCommand;
+import business.configuration.AuthProvider;
+import business.configuration.DatabaseProvider;
 import persistance.models.User;
 import presentation.dialogs.AuthDialog;
+import presentation.dialogs.BaseDialog;
+import presentation.models.AuthModel;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -23,7 +24,7 @@ public class RemoveAcc implements ILibraryCommand {
             }
             User user =DatabaseProvider.userDatabase.findUserWithLogin(authModel.login);
             DatabaseProvider.userDatabase.delete(user);
-            System.out.println("Done.");
+            BaseDialog.done();
         } else {
             AuthDialog.printTryAuthState(tryAuthState);
         }

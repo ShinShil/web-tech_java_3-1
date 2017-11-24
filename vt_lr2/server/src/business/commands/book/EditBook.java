@@ -15,9 +15,9 @@ public class EditBook implements ILibraryCommand {
         if(oldBook != null) {
             BookRecord newBook = BookDialog.readNewBook();
             DatabaseProvider.bookDatabase.update(oldBook, newBook);
-            System.out.println("book has been successfully updated");
+            BookDialog.printAfterBookUpdated();
         } else {
-            System.out.println("book with specified id wasn't found");
+            BookDialog.printBookWithIdNotFound();
         }
     }
 }

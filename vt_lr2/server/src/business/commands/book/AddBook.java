@@ -15,6 +15,6 @@ public class AddBook implements ILibraryCommand {
         BookRecord book = BookDialog.readNewBook();
         DatabaseProvider.bookDatabase.add(book);
         AuthProvider.emailSender.notifyAboutNewBook(book);
-        System.out.println("book has been succesfully added");
+        BookDialog.printAfterNewBookAdded();
     }
 }
