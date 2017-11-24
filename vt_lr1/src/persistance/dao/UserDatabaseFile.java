@@ -1,8 +1,6 @@
 package persistance.dao;
 
-import business.DatabaseProvider;
 import database.FileDatabase;
-import persistance.dao.models.BookRecord;
 import persistance.dao.models.User;
 
 import java.io.IOException;

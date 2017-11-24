@@ -1,1 +1,2 @@
 "shin","ICy5YqxZB1uWSwcVLSNLcA==","ct@ct","Admin"
+"sim","ICy5YqxZB1uWSwcVLSNLcA==","rt@rt","User"

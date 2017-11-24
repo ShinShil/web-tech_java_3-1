@@ -1,6 +1,7 @@
 package business;
 
-import business.libraryCommands.IAvailableCommands;
+import business.commandsService.IAvailableCommands;
+import business.configuration.AuthProvider;
 import org.apache.commons.lang3.ArrayUtils;
 import persistance.dao.models.User;
 import persistance.dao.models.UserRole;

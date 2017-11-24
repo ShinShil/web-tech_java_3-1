@@ -1,5 +1,6 @@
 package business;
 
+import business.configuration.DatabaseProvider;
 import persistance.dao.models.BookRecord;
 import persistance.dao.models.User;
 import persistance.dao.models.UserRole;
