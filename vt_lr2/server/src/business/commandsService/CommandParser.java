@@ -1,6 +1,5 @@
 package business.commandsService;
 
-import business.commandsService.providers.ConsoleCommandProvider;
 import business.configuration.AuthProvider;
 import presentation.dialogs.CommandDialog;
 
