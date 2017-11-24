@@ -12,15 +12,7 @@ import java.util.Map;
 
 public class CommandsMap {
     private static Map<String, ILibraryCommand> commands = new HashMap<String, ILibraryCommand>();
-    private static Map<UserRole, String[]> permissions = new HashMap<>();
-    public static String[] unauthCommands = {
-            IAvailableCommands.exit,
-            IAvailableCommands.auth,
-            IAvailableCommands.authInfo,
-            IAvailableCommands.deleteAcc,
-            IAvailableCommands.help,
-            IAvailableCommands.register
-    };
+
     static {
         commands.put(IAvailableCommands.exit, new Exit());
         commands.put(IAvailableCommands.addBook, new AddBook());
@@ -34,17 +26,6 @@ public class CommandsMap {
         commands.put(IAvailableCommands.search, new SearchBook());
         commands.put(IAvailableCommands.logout, new Logout());
         commands.put(IAvailableCommands.authInfo, new AuthInfo());
-
-        permissions.put(UserRole.User, new String[]{
-            IAvailableCommands.viewBooks,
-            IAvailableCommands.search
-        });
-
-        permissions.put(UserRole.Admin, ArrayUtils.addAll(permissions.get(UserRole.User), new String[]{
-            IAvailableCommands.edit,
-            IAvailableCommands.deleteBook,
-            IAvailableCommands.addBook
-        }));
     }
     public static Map<String, ILibraryCommand> getCommands() {
         return commands;

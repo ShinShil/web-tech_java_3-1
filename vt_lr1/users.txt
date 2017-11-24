@@ -1,1 +1,2 @@
 "shin","123","qwe@qwe","Admin"
+"sim","123","rt@rt","User"

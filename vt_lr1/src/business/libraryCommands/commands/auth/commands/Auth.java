@@ -1,6 +1,6 @@
 package business.libraryCommands.commands.auth.commands;
 
-import business.libraryCommands.AuthProvider;
+import business.AuthProvider;
 import business.libraryCommands.ILibraryCommand;
 import business.libraryCommands.commands.auth.AuthHelper;
 import business.libraryCommands.commands.auth.AuthModel;

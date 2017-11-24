@@ -1,5 +1,7 @@
 package business.libraryCommands;
 
+import business.AuthProvider;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Scanner;
@@ -24,7 +26,11 @@ public class CommandParser {
 
     private void invokeCommand(String[] tokens) throws IllegalAccessException, NoSuchFieldException, IOException, NoSuchMethodException, InvocationTargetException, InstantiationException {
         if(CommandsMap.getCommands().containsKey(tokens[0])) {
-            CommandsMap.getCommands().get(tokens[0]).Invoke(tokens);
+            if(AuthProvider.permissionManager.isCommandAllowed(tokens[0])) {
+                CommandsMap.getCommands().get(tokens[0]).Invoke(tokens);
+            } else {
+                System.out.println("You are not allowed to execute this command");
+            }
         } else {
             System.out.println("Unknown command: " + tokens[0]);
             System.out.println("Type help for available commands");

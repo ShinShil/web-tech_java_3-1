@@ -1,6 +1,6 @@
 package business.libraryCommands.commands.auth.commands;
 
-import business.libraryCommands.AuthProvider;
+import business.AuthProvider;
 import business.libraryCommands.ILibraryCommand;
 
 import java.io.IOException;

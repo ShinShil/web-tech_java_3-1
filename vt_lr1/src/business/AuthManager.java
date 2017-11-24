@@ -1,6 +1,5 @@
 package business;
 
-import business.libraryCommands.AuthProvider;
 import business.libraryCommands.commands.auth.AuthModel;
 import business.libraryCommands.commands.auth.AuthModelState;
 import persistance.dao.models.User;
