@@ -4,6 +4,7 @@ import business.libraryCommands.commands.auth.commands.*;
 import business.libraryCommands.commands.book.*;
 import business.libraryCommands.commands.Exit;
 import business.libraryCommands.commands.Help;
+import org.apache.commons.lang3.ArrayUtils;
 import persistance.dao.models.UserRole;
 
 import java.util.HashMap;
@@ -16,8 +17,8 @@ public class CommandsMap {
             IAvailableCommands.exit,
             IAvailableCommands.auth,
             IAvailableCommands.authInfo,
+            IAvailableCommands.deleteAcc,
             IAvailableCommands.help,
-            IAvailableCommands.logout,
             IAvailableCommands.register
     };
     static {
@@ -38,6 +39,12 @@ public class CommandsMap {
             IAvailableCommands.viewBooks,
             IAvailableCommands.search
         });
+
+        permissions.put(UserRole.Admin, ArrayUtils.addAll(permissions.get(UserRole.User), new String[]{
+            IAvailableCommands.edit,
+            IAvailableCommands.deleteBook,
+            IAvailableCommands.addBook
+        }));
     }
     public static Map<String, ILibraryCommand> getCommands() {
         return commands;
