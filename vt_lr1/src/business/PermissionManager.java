@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PermissionManager {
-    private Map<UserRole, String[]> permissions = new HashMap<>();
-    private String[] unAuthCommands = {
+    public Map<UserRole, String[]> permissions = new HashMap<>();
+    public String[] unAuthCommands = {
             IAvailableCommands.exit,
             IAvailableCommands.auth,
             IAvailableCommands.authInfo,
