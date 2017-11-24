@@ -24,6 +24,12 @@ public class BookHelper {
         return book;
     }
 
+    public static String readAdminName() {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Enter admin name");
+        return scan.nextLine();
+    }
+
     public static List<RecordSearchParams> readSearchBooksParams() throws IllegalAccessException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the fields for search, you can use space as separator. There are 3 fields: id, name, author");

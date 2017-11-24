@@ -39,7 +39,8 @@ public class PermissionManager {
     private void configurePermissions() {
         permissions.put(UserRole.User, new String[]{
                 IAvailableCommands.viewBooks,
-                IAvailableCommands.search
+                IAvailableCommands.search,
+                IAvailableCommands.suggest
         });
 
         permissions.put(UserRole.Admin, ArrayUtils.addAll(permissions.get(UserRole.User), new String[]{

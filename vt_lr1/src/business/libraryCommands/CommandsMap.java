@@ -26,6 +26,7 @@ public class CommandsMap {
         commands.put(IAvailableCommands.search, new SearchBook());
         commands.put(IAvailableCommands.logout, new Logout());
         commands.put(IAvailableCommands.authInfo, new AuthInfo());
+        commands.put(IAvailableCommands.suggest, new SuggestBook());
     }
     public static Map<String, ILibraryCommand> getCommands() {
         return commands;

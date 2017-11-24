@@ -6,6 +6,7 @@ public interface IAvailableCommands {
     String deleteBook = "delete";
     String viewBooks = "view";
     String search = "search";
+    String suggest = "suggest";
 
     String register = "register";
     String auth = "auth";
