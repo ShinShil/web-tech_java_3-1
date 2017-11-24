@@ -1,6 +1,6 @@
 package business.commands.book;
 
-import persistance.dao.models.BookRecord;
+import persistance.models.BookRecord;
 import business.configuration.DatabaseProvider;
 import business.commandsService.ILibraryCommand;
 import presentation.dialogs.BookDialog;

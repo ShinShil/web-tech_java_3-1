@@ -3,8 +3,8 @@ package business;
 import business.commandsService.IAvailableCommands;
 import business.configuration.AuthProvider;
 import org.apache.commons.lang3.ArrayUtils;
-import persistance.dao.models.User;
-import persistance.dao.models.UserRole;
+import persistance.models.User;
+import persistance.models.UserRole;
 
 import java.util.HashMap;
 import java.util.Map;

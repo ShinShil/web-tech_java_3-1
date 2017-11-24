@@ -1,12 +1,9 @@
 package business.commands;
 
-import business.commandsService.IAvailableCommands;
 import business.commandsService.ILibraryCommand;
 import business.configuration.AuthProvider;
-import persistance.dao.models.UserRole;
+import persistance.models.UserRole;
 import presentation.dialogs.HelpDialog;
-
-import java.lang.reflect.Field;
 
 public class Help implements ILibraryCommand {
     @Override

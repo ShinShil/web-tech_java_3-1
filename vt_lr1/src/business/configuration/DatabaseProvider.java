@@ -1,9 +1,9 @@
 package business.configuration;
 
-import persistance.dao.BookDatabaseFile;
-import persistance.dao.IBookDatabase;
-import persistance.dao.IUserDatabase;
-import persistance.dao.UserDatabaseFile;
+import persistance.BookDatabaseFile;
+import persistance.IBookDatabase;
+import persistance.IUserDatabase;
+import persistance.UserDatabaseFile;
 
 import java.io.IOException;
 

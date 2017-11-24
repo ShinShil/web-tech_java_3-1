@@ -1,4 +1,4 @@
-package persistance.dao.models;
+package persistance.models;
 
 public class User {
     public String name;

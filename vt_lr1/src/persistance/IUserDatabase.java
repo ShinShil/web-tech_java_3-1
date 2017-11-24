@@ -1,7 +1,6 @@
-package persistance.dao;
+package persistance;
 
-import persistance.dao.models.BookRecord;
-import persistance.dao.models.User;
+import persistance.models.User;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

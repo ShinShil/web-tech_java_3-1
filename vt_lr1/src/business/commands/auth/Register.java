@@ -3,7 +3,7 @@ package business.commands.auth;
 import business.configuration.AuthProvider;
 import business.configuration.DatabaseProvider;
 import business.commandsService.ILibraryCommand;
-import persistance.dao.models.User;
+import persistance.models.User;
 import presentation.dialogs.AuthDialog;
 
 import java.io.IOException;

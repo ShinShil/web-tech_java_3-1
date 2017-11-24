@@ -5,7 +5,7 @@ import business.configuration.AuthProvider;
 import business.commandsService.ILibraryCommand;
 import presentation.models.AuthModel;
 import business.auth.AuthModelState;
-import persistance.dao.models.User;
+import persistance.models.User;
 import presentation.dialogs.AuthDialog;
 
 import java.io.IOException;

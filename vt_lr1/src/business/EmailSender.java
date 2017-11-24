@@ -1,9 +1,9 @@
 package business;
 
 import business.configuration.DatabaseProvider;
-import persistance.dao.models.BookRecord;
-import persistance.dao.models.User;
-import persistance.dao.models.UserRole;
+import persistance.models.BookRecord;
+import persistance.models.User;
+import persistance.models.UserRole;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

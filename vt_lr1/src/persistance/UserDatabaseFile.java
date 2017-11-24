@@ -1,7 +1,7 @@
-package persistance.dao;
+package persistance;
 
 import database.FileDatabase;
-import persistance.dao.models.User;
+import persistance.models.User;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

@@ -1,6 +1,6 @@
 package business.auth;
 
-import persistance.dao.models.User;
+import persistance.models.User;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

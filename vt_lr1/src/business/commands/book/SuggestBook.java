@@ -3,9 +3,9 @@ package business.commands.book;
 import business.configuration.AuthProvider;
 import business.configuration.DatabaseProvider;
 import business.commandsService.ILibraryCommand;
-import persistance.dao.models.BookRecord;
-import persistance.dao.models.User;
-import persistance.dao.models.UserRole;
+import persistance.models.BookRecord;
+import persistance.models.User;
+import persistance.models.UserRole;
 import presentation.dialogs.BookDialog;
 
 import java.io.IOException;

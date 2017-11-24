@@ -2,8 +2,8 @@ package business.commands.book;
 
 import business.configuration.DatabaseProvider;
 import business.commandsService.ILibraryCommand;
-import persistance.dao.models.BookRecord;
-import persistance.dao.models.RecordSearchParams;
+import persistance.models.BookRecord;
+import persistance.models.RecordSearchParams;
 import presentation.dialogs.BookDialog;
 import business.configuration.constants.IBookFields;
 

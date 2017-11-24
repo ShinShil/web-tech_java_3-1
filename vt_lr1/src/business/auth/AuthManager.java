@@ -3,7 +3,7 @@ package business.auth;
 import business.configuration.AuthProvider;
 import business.configuration.DatabaseProvider;
 import presentation.models.AuthModel;
-import persistance.dao.models.User;
+import persistance.models.User;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

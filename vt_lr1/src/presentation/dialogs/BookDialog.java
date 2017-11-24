@@ -1,11 +1,10 @@
 package presentation.dialogs;
 
-import persistance.dao.models.BookRecord;
+import persistance.models.BookRecord;
 import business.configuration.DatabaseProvider;
-import persistance.dao.models.RecordSearchParams;
+import persistance.models.RecordSearchParams;
 import business.configuration.constants.IBookFields;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

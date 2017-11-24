@@ -3,8 +3,8 @@ package presentation.dialogs;
 import business.configuration.constants.IAdminKey;
 import presentation.models.AuthModel;
 import business.auth.AuthModelState;
-import persistance.dao.models.User;
-import persistance.dao.models.UserRole;
+import persistance.models.User;
+import persistance.models.UserRole;
 
 import java.util.Scanner;
 
