@@ -1,3 +1,4 @@
+import business.auth.AuthManager;
 import business.commandsService.CommandParser;
 import presentation.dialogs.BaseDialog;
 import presentation.userCommunicationConfig.CLIPrinter;
@@ -8,6 +9,7 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.security.AuthProvider;
 import java.security.NoSuchAlgorithmException;
 
 public class ApplicationServer {
@@ -23,6 +25,7 @@ public class ApplicationServer {
         });
         serverThread.setDaemon(true);
         serverThread.start();
+        business.configuration.AuthProvider.authManager.set(new AuthManager());
         new CommandParser().Run();
     }
 
@@ -33,6 +36,7 @@ public class ApplicationServer {
             new CLIPrinter().println("new client connected");
             Thread thread = new Thread(() -> {
                 try {
+                    business.configuration.AuthProvider.authManager.set(new AuthManager());
                     BaseDialog.scanner.set(new SocketReader(connectionSocket.getInputStream()));
                     BaseDialog.printer.set(new SocketWriter(connectionSocket.getOutputStream()));
                     new CommandParser().Run();

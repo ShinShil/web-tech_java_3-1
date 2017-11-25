@@ -10,6 +10,6 @@ import java.lang.reflect.InvocationTargetException;
 public class AuthInfo implements ILibraryCommand {
     @Override
     public void Invoke(String[] tokens) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
-        AuthDialog.printLogInfo(AuthProvider.authManager.getAuthUser());
+        AuthDialog.printLogInfo(AuthProvider.authManager.get().getAuthUser());
     }
 }

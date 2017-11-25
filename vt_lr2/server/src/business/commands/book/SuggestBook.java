@@ -21,7 +21,7 @@ public class SuggestBook implements ILibraryCommand {
         if(admin == null || admin.role != UserRole.Admin) {
             BookDialog.printIfCantFindAdminWithLogin();
         } else {
-            User sender = AuthProvider.authManager.getAuthUser();
+            User sender = AuthProvider.authManager.get().getAuthUser();
             AuthProvider.emailSender.suggestNewBook(bookRecord, admin, sender);
         }
     }

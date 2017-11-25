@@ -12,12 +12,12 @@ public class SocketWriter implements IPrinter {
 
     @Override
     public void print(String line) {
-        printWriter.print(line);
+        printWriter.print(line + "\n\0");
         printWriter.flush();
     }
 
     @Override
     public void println(String line) {
-        print(line + "\n\0");
+        print(line);
     }
 }

@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 public class Logout implements ILibraryCommand {
     @Override
     public void Invoke(String[] tokens) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
-        AuthProvider.authManager.exit();
+        AuthProvider.authManager.get().exit();
         BaseDialog.done();
     }
 }

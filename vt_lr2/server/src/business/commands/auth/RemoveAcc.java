@@ -17,10 +17,10 @@ public class RemoveAcc implements ILibraryCommand {
     @Override
     public void Invoke(String[] tokens) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException, NoSuchAlgorithmException {
         AuthModel authModel = AuthDialog.readAuthData();
-        AuthModelState tryAuthState = AuthProvider.authManager.getUserTryAuthState(authModel);
+        AuthModelState tryAuthState = AuthProvider.authManager.get().getUserTryAuthState(authModel);
         if(tryAuthState == AuthModelState.Valid) {
-            if(AuthProvider.authManager.getAuthUserName().equals(authModel.login)) {
-                AuthProvider.authManager.exit();
+            if(AuthProvider.authManager.get().getAuthUserName().equals(authModel.login)) {
+                AuthProvider.authManager.get().exit();
             }
             User user =DatabaseProvider.userDatabase.findUserWithLogin(authModel.login);
             DatabaseProvider.userDatabase.delete(user);

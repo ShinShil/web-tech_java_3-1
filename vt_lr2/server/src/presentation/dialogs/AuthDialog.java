@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class AuthDialog extends BaseDialog {
     public static User readNewUser() throws IOException {
-        Scanner scan = new Scanner(System.in);
         printer.get().print("Enter login: ");
         String login = scanner.get().nextLine();
         printer.get().print("Enter password: ");
@@ -34,7 +33,6 @@ public class AuthDialog extends BaseDialog {
 
     public static AuthModel readAuthData() throws IOException {
         AuthModel authModel = new AuthModel();
-        Scanner scan = new Scanner(System.in);
         printer.get().print("Enter login: ");
         authModel.login = scanner.get().nextLine();
         printer.get().print("Enter password: ");

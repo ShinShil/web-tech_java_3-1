@@ -85,9 +85,9 @@ public class BookDialog extends BaseDialog{
         return book;
     }
 
-    public static int readBooksPerPageAmount() {
+    public static int readBooksPerPageAmount() throws IOException {
         printer.get().print("Enter amount of books per page(0): ");
-        return new Scanner(System.in).nextInt();
+        return scanner.get().nextInt();
     }
 
     public static void printBooksWithPaging(BookRecord[] books, int amountOnPage) throws IOException {
@@ -103,7 +103,7 @@ public class BookDialog extends BaseDialog{
                 printBooks(Arrays.copyOfRange(books, page * amountOnPage, endOfPage));
                 if(endOfPage != books.length) {
                     printer.get().println("Enter for next page");
-                    new BufferedReader(new InputStreamReader(System.in)).readLine();
+                    scanner.get().nextLine();
                 }
             }
             printer.get().println("\ndone. All pages have been printed.");
@@ -117,7 +117,7 @@ public class BookDialog extends BaseDialog{
             }
             for (BookRecord book :
                     books) {
-                printer.get().print(String.format("%d\t%s\t%s\n", book.id, book.name, book.author));
+                printer.get().println(String.format("%d\t%s\t%s", book.id, book.name, book.author));
             }
         }else {
             printer.get().println("There no books");

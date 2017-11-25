@@ -14,8 +14,8 @@ public class Auth implements ILibraryCommand {
     @Override
     public void Invoke(String[] tokens) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException, NoSuchAlgorithmException {
         AuthModel authModel = AuthDialog.readAuthData();
-        AuthProvider.authManager.auth(authModel);
-        AuthModelState tryAuthState = AuthProvider.authManager.getUserTryAuthState(authModel);
+        AuthProvider.authManager.get().auth(authModel);
+        AuthModelState tryAuthState = AuthProvider.authManager.get().getUserTryAuthState(authModel);
         AuthDialog.printTryAuthState(tryAuthState);
     }
 }

@@ -26,7 +26,7 @@ public class PermissionManager {
     }
 
     public boolean isCommandAllowed(String command) {
-        User user = AuthProvider.authManager.getAuthUser();
+        User user = AuthProvider.authManager.get().getAuthUser();
         boolean res = false;
         String[] allowedCommands = user == null
                 ? unAuthCommands
