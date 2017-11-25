@@ -27,6 +27,6 @@ public abstract class BaseDialog {
     }
 
     public static void startMessage() {
-        printer.get().println("Application has started");
+        printer.get().println("ApplicationServer has started");
     }
 }

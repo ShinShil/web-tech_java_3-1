@@ -13,11 +13,11 @@ public class SocketWriter implements IPrinter {
     @Override
     public void print(String line) {
         printWriter.print(line);
+        printWriter.flush();
     }
 
     @Override
     public void println(String line) {
-        print(line);
-        print("\n");
+        print(line + "\n\0");
     }
 }
