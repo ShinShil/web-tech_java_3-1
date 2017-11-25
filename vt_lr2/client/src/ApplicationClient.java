@@ -19,17 +19,36 @@ public class ApplicationClient {
         BufferedReader clientInputReader = new BufferedReader(new InputStreamReader(System.in));
         String clientInput;
         String serverResponse;
-        while((clientInput = clientInputReader.readLine()) != null) {
+        while(true) {
+            clientInput = clientInputReader.readLine();
             printWriter.println(clientInput);
             printWriter.flush();
             if(clientInput.equalsIgnoreCase("exit")) {
                 break;
             }
-            while ((serverResponse = bufferedReader.readLine())!=null) {
-                System.out.println(serverResponse);
-            }
+            Thread thread = new Thread(new ReadingThread(bufferedReader));
+            thread.start();
         }
         System.out.println("Exiting from the system...");
         System.exit(0);
+    }
+
+    private static class ReadingThread implements Runnable {
+        BufferedReader bufferedReader;
+        public  ReadingThread(Object parameter) {
+            bufferedReader = (BufferedReader) parameter;
+        }
+
+        @Override
+        public void run() {
+            String serverResponse;
+            try {
+                while ((serverResponse = bufferedReader.readLine())!=null) {
+                    System.out.println(serverResponse);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
