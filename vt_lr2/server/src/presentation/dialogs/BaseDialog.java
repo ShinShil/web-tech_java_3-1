@@ -5,33 +5,28 @@ import presentation.userCommunicationConfig.IPrinter;
 import presentation.userCommunicationConfig.IScanner;
 
 public abstract class BaseDialog {
-    public static IPrinter printer;
-    public static IScanner scanner;
+    public static ThreadLocal<IPrinter> printer = new ThreadLocal<>();
+    public static ThreadLocal<IScanner> scanner = new ThreadLocal<>();
 
     static {
-        printer = CommunicationProvider.printer;
-        scanner = CommunicationProvider.scanner;
+        printer.set(CommunicationProvider.printer);
+        scanner.set(CommunicationProvider.scanner);
     }
 
     public BaseDialog() {
 
     }
 
-    public BaseDialog(IPrinter printer, IScanner scanner) {
-        this.printer = printer;
-        this.scanner = scanner;
-    }
-
     public static void done() {
-        printer.println("Done.");
+        printer.get().println("Done.");
     }
 
     public static void printOnExit() {
-        printer.println("Shutting down...");
-        printer.println("Finish");
+        printer.get().println("Shutting down...");
+        printer.get().println("Finish");
     }
 
     public static void startMessage() {
-        printer.println("Application has started");
+        printer.get().println("Application has started");
     }
 }

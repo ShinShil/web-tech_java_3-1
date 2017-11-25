@@ -6,19 +6,20 @@ import business.auth.AuthModelState;
 import persistance.models.User;
 import persistance.models.UserRole;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AuthDialog extends BaseDialog {
-    public static User readNewUser() {
+    public static User readNewUser() throws IOException {
         Scanner scan = new Scanner(System.in);
-        printer.print("Enter login: ");
-        String login = scanner.nextLine();
-        printer.print("Enter password: ");
-        String password = scanner.nextLine();
-        printer.print("Enter email: ");
-        String email = scanner.nextLine();
-        printer.print("Enter key for admin role: ");
-        String adminKey = scanner.nextLine();
+        printer.get().print("Enter login: ");
+        String login = scanner.get().nextLine();
+        printer.get().print("Enter password: ");
+        String password = scanner.get().nextLine();
+        printer.get().print("Enter email: ");
+        String email = scanner.get().nextLine();
+        printer.get().print("Enter key for admin role: ");
+        String adminKey = scanner.get().nextLine();
         User user = new User();
         user.name = login;
         user.email = email;
@@ -28,40 +29,40 @@ public class AuthDialog extends BaseDialog {
     }
 
     public static void printAfterUserRegistered() {
-        printer.println("New user has  been successfully registered");
+        printer.get().println("New user has  been successfully registered");
     }
 
-    public static AuthModel readAuthData() {
+    public static AuthModel readAuthData() throws IOException {
         AuthModel authModel = new AuthModel();
         Scanner scan = new Scanner(System.in);
-        printer.print("Enter login: ");
-        authModel.login = scanner.nextLine();
-        printer.print("Enter password: ");
-        authModel.password = scanner.nextLine();
+        printer.get().print("Enter login: ");
+        authModel.login = scanner.get().nextLine();
+        printer.get().print("Enter password: ");
+        authModel.password = scanner.get().nextLine();
         return authModel;
     }
 
     public static void printTryAuthState(AuthModelState state) {
         switch(state) {
             case Valid:
-                printer.println("Login and password are valid. You are done.");
+                printer.get().println("Login and password are valid. You are done.");
                 break;
             case WrongPassword:
-                printer.println("Wrong password");
+                printer.get().println("Wrong password");
                 break;
             case WrongLogin:
-                printer.println("Wrong login");
+                printer.get().println("Wrong login");
                 break;
         }
     }
 
     public static void printLogInfo(User user) {
         if(user == null) {
-            printer.println("User is logged out");
+            printer.get().println("User is logged out");
         } else {
-            printer.println("User is logged on");
-            printer.println("Login: " + user.name);
-            printer.println("Role: " + user.role);
+            printer.get().println("User is logged on");
+            printer.get().println("Login: " + user.name);
+            printer.get().println("Role: " + user.role);
         }
 
     }

@@ -16,46 +16,43 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookDialog extends BaseDialog{
-    public static BookRecord readNewBook() {
-        Scanner scanner = new Scanner(System.in);
+    public static BookRecord readNewBook() throws IOException {
         BookRecord book = new BookRecord();
-        printer.print("Enter author of the book: ");
-        book.author = scanner.nextLine();
-        printer.print("Enter name of the book: ");
-        book.name = scanner.nextLine();
+        printer.get().print("Enter author of the book: ");
+        book.author = scanner.get().nextLine();
+        printer.get().print("Enter name of the book: ");
+        book.name = scanner.get().nextLine();
         return book;
     }
 
     public static void printIfCantFindAdminWithLogin() {
-        printer.println("Can't find admin with such login");
+        printer.get().println("Can't find admin with such login");
     }
 
     public static void printAfterNewBookAdded() {
-        printer.println("New book has been succesfully added");
+        printer.get().println("New book has been succesfully added");
     }
 
     public static void printAfterBookDeleted() {
-        printer.println("book has been succesfully deleted");
+        printer.get().println("book has been succesfully deleted");
     }
 
     public static void printBookWithIdNotFound() {
-        printer.println("Book with specified id wasn't found");
+        printer.get().println("Book with specified id wasn't found");
     }
 
     public static void printAfterBookUpdated() {
-        printer.println("book has been successfully updated");
+        printer.get().println("book has been successfully updated");
     }
 
-    public static String readAdminName() {
-        Scanner scan = new Scanner(System.in);
-        printer.print("Enter admin name: ");
-        return scanner.nextLine();
+    public static String readAdminName() throws IOException {
+        printer.get().print("Enter admin name: ");
+        return scanner.get().nextLine();
     }
 
-    public static List<RecordSearchParams> readSearchBooksParams() throws IllegalAccessException {
-        Scanner scanner = new Scanner(System.in);
-        printer.println("Enter the fields for search, you can use space as separator. There are 3 fields: id, name, author");
-        String[] fieldsForSearch = scanner.nextLine().split(" ");
+    public static List<RecordSearchParams> readSearchBooksParams() throws IllegalAccessException, IOException {
+        printer.get().println("Enter the fields for search, you can use space as separator. There are 3 fields: id, name, author");
+        String[] fieldsForSearch = scanner.get().nextLine().split(" ");
         Field[] validBookFields = IBookFields.class.getDeclaredFields();
         List<RecordSearchParams> res = new ArrayList<>();
         for (String fieldForSearch : fieldsForSearch) {
@@ -64,12 +61,12 @@ public class BookDialog extends BaseDialog{
                 ifFind = ifFind || field.get(field.getClass()).toString().equals(fieldForSearch);
             }
             if(!ifFind) {
-                printer.println(fieldForSearch + " is unknown field");
+                printer.get().println(fieldForSearch + " is unknown field");
             } else {
                 RecordSearchParams params = new RecordSearchParams();
                 params.field = fieldForSearch;
-                printer.print("Enter string for search for field " + fieldForSearch + ": ");
-                String input = scanner.nextLine();
+                printer.get().print("Enter string for search for field " + fieldForSearch + ": ");
+                String input = scanner.get().nextLine();
                 params.value = input;
                 res.add(params);
             }
@@ -78,9 +75,8 @@ public class BookDialog extends BaseDialog{
     }
 
     public static BookRecord getBookWithId() throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
-        Scanner scanner = new Scanner(System.in);
-        printer.print("Enter book id: ");
-        int id = scanner.nextInt();
+        printer.get().print("Enter book id: ");
+        int id = scanner.get().nextInt();
         BookRecord[] books = DatabaseProvider.bookDatabase.getAllBooks();
         BookRecord book = null;
         if(Arrays.stream(books).anyMatch(b -> b.id == id)) {
@@ -90,27 +86,27 @@ public class BookDialog extends BaseDialog{
     }
 
     public static int readBooksPerPageAmount() {
-        printer.print("Enter amount of books per page(0): ");
+        printer.get().print("Enter amount of books per page(0): ");
         return new Scanner(System.in).nextInt();
     }
 
     public static void printBooksWithPaging(BookRecord[] books, int amountOnPage) throws IOException {
         if(books.length == 0) {
-            printer.println("There are no books in database");
+            printer.get().println("There are no books in database");
         } else {
             for(int page = 0; page * amountOnPage < books.length; ++page) {
-                printer.println("Page " + (page + 1));
+                printer.get().println("Page " + (page + 1));
                 int endOfPage = (page + 1) * amountOnPage;
                 if(endOfPage > books.length) {
                     endOfPage = books.length;
                 }
                 printBooks(Arrays.copyOfRange(books, page * amountOnPage, endOfPage));
                 if(endOfPage != books.length) {
-                    printer.println("Enter for next page");
+                    printer.get().println("Enter for next page");
                     new BufferedReader(new InputStreamReader(System.in)).readLine();
                 }
             }
-            printer.println("\ndone. All pages have been printed.");
+            printer.get().println("\ndone. All pages have been printed.");
         }
     }
 
@@ -121,10 +117,10 @@ public class BookDialog extends BaseDialog{
             }
             for (BookRecord book :
                     books) {
-                printer.print(String.format("%d\t%s\t%s\n", book.id, book.name, book.author));
+                printer.get().print(String.format("%d\t%s\t%s\n", book.id, book.name, book.author));
             }
         }else {
-            printer.println("There no books");
+            printer.get().println("There no books");
         }
     }
 
@@ -133,6 +129,6 @@ public class BookDialog extends BaseDialog{
     }
 
     public static void printBooksHeader() {
-        printer.println("Id\tName\tAuthor");
+        printer.get().println("Id\tName\tAuthor");
     }
 }
