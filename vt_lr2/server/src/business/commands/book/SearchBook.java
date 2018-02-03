@@ -2,6 +2,7 @@ package business.commands.book;
 
 import business.configuration.DatabaseProvider;
 import business.commandsService.ILibraryCommand;
+import org.jdom2.JDOMException;
 import persistance.models.BookRecord;
 import persistance.models.RecordSearchParams;
 import presentation.dialogs.BookDialog;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class SearchBook implements ILibraryCommand {
     @Override
-    public void Invoke(String[] tokens) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
+    public void Invoke(String[] tokens) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException, JDOMException {
         List<RecordSearchParams> searchParams = BookDialog.readSearchBooksParams();
         if(searchParams != null && searchParams.size() > 0) {
             BookRecord[] books = DatabaseProvider.bookDatabase.getAllBooks();

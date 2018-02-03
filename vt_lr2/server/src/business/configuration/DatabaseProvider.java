@@ -1,9 +1,9 @@
 package business.configuration;
 
-import persistance.BookDatabaseFile;
+import persistance.BookDatabase;
 import persistance.IBookDatabase;
 import persistance.IUserDatabase;
-import persistance.UserDatabaseFile;
+import persistance.UserDatabase;
 
 import java.io.IOException;
 
@@ -13,8 +13,8 @@ public class DatabaseProvider {
 
     static {
         try {
-            bookDatabase = new BookDatabaseFile();
-            userDatabase = new UserDatabaseFile();
+            bookDatabase = new BookDatabase();
+            userDatabase = new UserDatabase();
         } catch (IOException e) {
             e.printStackTrace();
         }

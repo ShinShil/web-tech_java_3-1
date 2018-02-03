@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="taglibs-standard-spec-1.2.5">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/xalan.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/xercesImpl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/xml-apis.jar!/" />
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/serializer.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

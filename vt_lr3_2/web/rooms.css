@@ -1,0 +1,19 @@
+.room {
+    cursor: pointer;
+    background-color: aquamarine;
+    opacity: 0.6;
+    height: 60px;
+    font-size: 200%;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    place-content: center;
+}
+
+.room:hover, .room.isFree1:hover {
+    opacity: 1;
+}
+
+.room.isFree1 {
+    background-color: coral;
+}

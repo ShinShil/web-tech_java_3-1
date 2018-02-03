@@ -1,5 +1,6 @@
 package presentation.dialogs;
 
+import org.jdom2.JDOMException;
 import persistance.models.BookRecord;
 import business.configuration.DatabaseProvider;
 import persistance.models.RecordSearchParams;
@@ -74,7 +75,7 @@ public class BookDialog extends BaseDialog{
         return res;
     }
 
-    public static BookRecord getBookWithId() throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
+    public static BookRecord getBookWithId() throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException, JDOMException {
         printer.get().print("Enter book id: ");
         int id = scanner.get().nextInt();
         BookRecord[] books = DatabaseProvider.bookDatabase.getAllBooks();

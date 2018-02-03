@@ -1,5 +1,6 @@
 import business.auth.AuthManager;
 import business.commandsService.CommandParser;
+import org.jdom2.JDOMException;
 import presentation.dialogs.BaseDialog;
 import presentation.userCommunicationConfig.CLIPrinter;
 import presentation.userCommunicationConfig.SocketReader;
@@ -14,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
 
 public class ApplicationServer {
     final static int portNumber = 3000;
-    public static void main(String[] args) throws IllegalAccessException, InvocationTargetException, NoSuchAlgorithmException, IOException, InstantiationException, NoSuchMethodException, NoSuchFieldException {
+    public static void main(String[] args) throws IllegalAccessException, InvocationTargetException, NoSuchAlgorithmException, IOException, InstantiationException, NoSuchMethodException, NoSuchFieldException, JDOMException {
         BaseDialog.startMessage();
         Thread serverThread = new Thread(() -> {
             try {
@@ -53,6 +54,8 @@ public class ApplicationServer {
                 } catch (InvocationTargetException e) {
                     e.printStackTrace();
                 } catch (NoSuchAlgorithmException e) {
+                    e.printStackTrace();
+                } catch (JDOMException e) {
                     e.printStackTrace();
                 }
             });

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistance.models.BookRecords>
+  <persistance.models.BookRecord>
+    <id>0</id>
+    <name>b</name>
+    <author>a</author>
+  </persistance.models.BookRecord>
+  <persistance.models.BookRecord>
+    <id>1</id>
+    <name>hobbit</name>
+    <author>tolkien</author>
+  </persistance.models.BookRecord>
+</persistance.models.BookRecords>

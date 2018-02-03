@@ -1,5 +1,6 @@
 package business.commands.book;
 
+import org.jdom2.JDOMException;
 import persistance.models.BookRecord;
 import business.configuration.DatabaseProvider;
 import business.commandsService.ILibraryCommand;
@@ -12,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 
 public class DeleteBook implements ILibraryCommand {
     @Override
-    public void Invoke(String[] tokens) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
+    public void Invoke(String[] tokens) throws NoSuchMethodException, IOException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException, JDOMException {
         BookRecord book = BookDialog.getBookWithId();
         if(book != null) {
             DatabaseProvider.bookDatabase.delete(book);
